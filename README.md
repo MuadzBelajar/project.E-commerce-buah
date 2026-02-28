@@ -102,5 +102,7 @@ ecommerce-project/
 ├── pages/                      # Halaman publik untuk customer
 │   ├── cart.php                # Halaman keranjang belanja
 │   └── catalog.php             # Halaman katalog produk
+│   └── my_orders.php           # Detail pemesanan (error)
+│   └── order_detail.php        # Detail pemesanan (error)
 └── index.php                   # Entry point, redirect ke catalog
 </code></pre>
