@@ -185,9 +185,12 @@ function getCartImage($filename) {
         .success-icon { font-size: 4rem; margin-bottom: 1rem; }
         .success-title { font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--color-success); }
         .success-text { color: var(--color-text-light); margin-bottom: 0.375rem; }
-        .success-order-id { font-size: 0.875rem; color: var(--color-text-lighter); margin-bottom: 2rem; font-weight: 600; }
-        .btn-success { display: inline-block; padding: 0.875rem 2rem; background: var(--color-primary); color: white; border-radius: 10px; text-decoration: none; font-weight: 700; transition: var(--transition); }
+        .success-order-id { font-size: 0.875rem; color: var(--color-text-lighter); margin-bottom: 1.5rem; font-weight: 600; }
+        .success-actions { display: flex; flex-direction: column; gap: 0.75rem; }
+        .btn-success { display: block; padding: 0.875rem 2rem; background: var(--color-primary); color: white; border-radius: 10px; text-decoration: none; font-weight: 700; transition: var(--transition); }
         .btn-success:hover { background: var(--color-primary-dark); }
+        .btn-success-outline { display: block; padding: 0.875rem 2rem; background: white; color: var(--color-primary); border: 2px solid var(--color-primary); border-radius: 10px; text-decoration: none; font-weight: 700; transition: var(--transition); }
+        .btn-success-outline:hover { background: var(--color-primary-light); }
 
         /* RESPONSIVE */
         @media (max-width: 768px) {
@@ -289,7 +292,10 @@ function getCartImage($filename) {
             <h2 class="success-title">Pesanan Berhasil!</h2>
             <p class="success-text">Pesanan kamu sudah masuk dan sedang diproses oleh admin.</p>
             <p class="success-order-id" id="successOrderId"></p>
-            <a href="catalog.php" class="btn-success">Belanja Lagi</a>
+            <div class="success-actions">
+                <a href="#" id="btnLihatPesanan" class="btn-success">📋 Lihat Pesanan Saya</a>
+                <a href="catalog.php" class="btn-success-outline">🛍️ Belanja Lagi</a>
+            </div>
         </div>
     </div>
 
@@ -488,6 +494,7 @@ function getCartImage($filename) {
             if (data.success) {
                 closeModal();
                 document.getElementById('successOrderId').textContent = 'No. Pesanan: #' + data.data.order_id;
+                document.getElementById('btnLihatPesanan').href = 'order_detail.php?id=' + data.data.order_id;
                 document.getElementById('successOverlay').classList.add('show');
             } else {
                 showToast(data.message, 'error');
