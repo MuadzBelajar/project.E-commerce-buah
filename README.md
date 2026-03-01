@@ -58,8 +58,6 @@ Website e-commerce penjualan buah segar berbasis PHP native dengan fitur CRUD le
 | **Admin** | Full CRUD: Create, Read, Update, Delete |
 | **User** | Read only: View catalog, cart, checkout |
 
-Keamanan: Password hashing (bcrypt), session management, role-based access control
-
 ---
 
 ## 🚀 TEKNOLOGI
