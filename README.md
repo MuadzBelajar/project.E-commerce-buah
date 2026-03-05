@@ -1,106 +1,114 @@
 # 🍎 BUAH SEGAR E-COMMERCE
 
-Website e-commerce penjualan buah segar berbasis PHP native dengan fitur CRUD lengkap, sistem autentikasi role-based, dan responsive design.
+Website e-commerce penjualan buah segar berbasis PHP native. 
 
----
+**First view**: Landing page yang mengarahkan ke mode E-Commerce dengan fitur CRUD lengkap dan sistem autentikasi role-based.
+<img width="1366" height="687" alt="image" src="https://github.com/user-attachments/assets/ce302b28-ee1e-418f-8f18-d1d501ac0f7f" />
+
+<img width="1366" height="692" alt="image" src="https://github.com/user-attachments/assets/6201c394-7ef9-4577-8d45-c76f3c6c553b" />
 
 
-### 1. STRUKTUR HTML
-- **Semantic HTML**: Penggunaan tag `&lt;header&gt;`, `&lt;nav&gt;`, `&lt;main&gt;`, `&lt;section&gt;`, `&lt;article&gt;`, `&lt;aside&gt;`, `&lt;footer&gt;`
-- **Form Validation**: Atribut `required`, `min`, `step`, `type="number"`, `accept="image/*"`
-- **Accessibility**: `alt` text, `aria-label`, keyboard navigation, focus states
-- **SEO Friendly**: Meta tags, descriptive title, heading hierarchy (h1→h2→h3)
+## ✨ Fitur Utama
 
-### 2. DESAIN CSS
-- **Responsiveness**: Media queries untuk mobile (&lt;768px), tablet (768-1024px), desktop (&gt;1024px)
-- **Visual Consistency**: CSS variables, typography (Playfair Display + DM Sans), spacing system
-- **Modern CSS**: Flexbox, CSS Grid, transitions, animations
-- **Cross-browser**: Compatible dengan Chrome, Firefox, Safari, Edge
+### 1. Struktur HTML
+- Semantic HTML5 (`&lt;header&gt;`, `&lt;nav&gt;`, `&lt;main&gt;`, `&lt;section&gt;`, `&lt;article&gt;`, `&lt;footer&gt;`)
+- Form validation (`required`, `pattern`, `min/max`)
+- Accessibility (ARIA labels, alt text, keyboard navigation)
+- SEO friendly (meta tags, heading hierarchy)
 
-### 3. CRUD OPERATIONS
-| Operasi | Fitur |
-|---------|-------|
-| **Create** | Tambah produk dengan upload gambar, auto-generate slug |
-| **Read** | List produk, filter pesanan by status, search functionality |
-| **Update** | Edit produk (pre-filled form), update status pesanan |
-| **Delete** | Hapus produk + file gambar dengan konfirmasi |
-| **Error Handling** | Try-catch database, form validation, user-friendly messages |
+### 2. Desain CSS
+- Responsive design (mobile, tablet, desktop)
+- CSS variables, Flexbox/Grid, transitions
+- Cross-browser compatible
 
-### 4. DATABASE INTEGRATION
-- **Connection**: PDO dengan UTF-8, single config file
-- **Query Optimization**: Prepared statements, helper functions
-- **Data Integrity**: Foreign keys, ENUM status, NOT NULL constraints
-- **Transaction**: Commit/rollback untuk operasi checkout
-- **Security**: SQL injection prevention, input sanitization, password bcrypt
+### 3. CRUD Operations
+| Operasi | Implementasi |
+|---------|-------------|
+| **Create** | Tambah produk + upload gambar |
+| **Read** | List produk, filter, search |
+| **Update** | Edit produk (pre-filled form) |
+| **Delete** | Hapus dengan konfirmasi |
+| **Error Handling** | Try-catch, user-friendly messages |
 
-### 5. USER EXPERIENCE
-- **Loading States**: Skeleton screens, button transitions
-- **Feedback System**: Flash messages, auto-hide alerts, status badges
-- **Navigation**: Breadcrumb, back button, active menu states, mobile overlay
-- **Performance**: Lazy loading, optimized images, efficient queries
+### 4. Database Integration
+- PDO connection dengan prepared statements
+- Foreign key constraints & data validation
+- Transaction handling (checkout)
+- SQL injection prevention
 
-### 6. CODE QUALITY
-- **Organization**: Modular folder structure, separation of concerns
-- **Documentation**: Inline comments, README, meaningful commit messages
-- **Version Control**: Git dengan .gitignore, branch management
-- **Testing**: Manual testing untuk CRUD, upload, checkout, login, responsive
+### 5. User Experience
+- Loading indicators & skeleton screens
+- Toast notifications (success/error)
+- Breadcrumb & intuitive navigation
+- Lazy loading images
 
-### 7. FITUR E-COMMERCE
-- **Halaman Beli**: Session-based cart, tambah/kurangi qty, hapus item
-- **Tabel Harga**: Format Rupiah, harga/kg, total dinamis
-- **Katalog + Upload**: Drag-drop upload, image preview, validasi 2MB, placeholder fallback
-- **Stok Habis**: Badge warna berdasarkan stok (merah ≤10, kuning ≤20, hijau &gt;20), disable beli jika habis
-- **Perhitungan Total**: Real-time subtotal, grand total checkout, detail breakdown
+### 6. Code Quality
+- Modular folder structure
+- Inline documentation
+- Git version control
+- Manual testing
 
-### 8. SISTEM AUTHENTIKASI
-| Role | Akses |
-|------|-------|
-| **Admin** | Full CRUD: Create, Read, Update, Delete |
-| **User** | Read only: View catalog, cart, checkout |
+### 7. Fitur E-Commerce
+- **Navbar Beli**: Cart icon dengan badge counter
+- **Katalog Produk**: Grid responsive, badge stok (merah/ kuning/hijau)
+- **Upload Gambar**: Drag-drop, preview, validasi 2MB
+- **Stok Management**: Disable beli jika stok habis
+- **Perhitungan Otomatis**: Subtotal & grand total real-time
 
----
+### 8. Sistem Autentikasi
+| Role | Hak Akses |
+|------|-----------|
+| **Admin** | Full CRUD (Create, Read, Update, Delete) |
+| **Customer** | Read only (view, cart, checkout) |
 
-## 🚀 TEKNOLOGI
+<h3>Default Login</h3>
 
-| Kategori | Teknologi |
-|----------|-----------|
-| Backend | PHP 8.x, MySQL, PDO |
-| Frontend | HTML5, CSS3, Vanilla JavaScript |
-| Tools | XAMPP, Git, VS Code |
+| Role | Username | Password |
+|------|----------|----------|
+| Admin | admin | admin123 |
+| Customer | budi | budi123 |
+| Customer | andi | andi123 |
+| Customer | siti | siti123 |
 
----
 
-## 📁 STRUKTUR FOLDER
+## Informasi project
 
+- **Backend**: PHP 8.x, MySQL, PDO
+- **Frontend**: HTML5, CSS3, Vanilla JavaScript
+- **Tools**: XAMPP, Git, VS Code
+
+
+## 📁 Struktur Folder
 <pre><code>
 ecommerce-project/
-├── admin/                      # Halaman admin (dashboard, kelola produk & pesanan)
-│   ├── dashboard.php           # Dashboard admin dengan statistik
-│   ├── orders.php              # Kelola pesanan (view, update status, delete)
-│   └── products.php            # CRUD produk (tambah, edit, hapus)
-├── api/                        # Endpoint AJAX untuk operasi cart
-│   ├── add_to_cart.php         # Tambah item ke keranjang
-│   ├── checkout.php            # Proses checkout dan kurangi stok
-│   ├── remove_cart.php         # Hapus item dari keranjang
-│   └── update_cart.php         # Update jumlah item di keranjang
+├── admin/                      # Dashboard admin (Role: Admin only)
+│   ├── dashboard.php           # Statistik penjualan, total pesanan, stok menipis
+│   ├── orders.php              # Kelola pesanan: update status, hapus, filter by status
+│   └── products.php            # CRUD produk: tambah, edit, hapus, upload gambar
+├── api/                        # Endpoint AJAX untuk operasi async
+│   ├── add_to_cart.php         # Tambah item ke session cart, return JSON cart_count
+│   ├── checkout.php            # Proses checkout: insert order, kurangi stok, clear cart
+│   ├── load_more_products.php  # Infinite scroll: return produk dalam format JSON/HTML
+│   ├── remove_cart.php         # Hapus item dari cart berdasarkan product_id
+│   └── update_cart.php         # Update quantity item di cart
 ├── assets/                     # Aset statis (gambar, CSS, JS)
 │   └── images/
-│       ├── hero/               # Gambar banner hero
-│       └── products/           # Gambar produk buah
-├── auth/                       # Sistem autentikasi
-│   ├── check_session.php       # Validasi session login
-│   ├── login.php               # Halaman login
-│   └── logout.php              # Proses logout
+│       ├── hero/               # Gambar banner landing page
+│       └── products/           # Gambar upload produk (local storage)
+├── auth/                       # Sistem autentikasi & session management
+│   ├── check_session.php       # Validasi login, redirect jika belum login, cek role
+│   ├── login.php               # Form login, validasi credential, set session
+│   └── logout.php              # Destroy session, redirect ke login
 ├── config/                     # Konfigurasi aplikasi
-│   └── database.php            # Koneksi database & helper functions
+│   └── database.php            # Koneksi PDO, helper functions (fetchAll, fetchOne, execute)
 ├── database/                   # File database
-│   └── buah_segar.sql          # Dump struktur dan data awal
-├── includes/                   # File fungsi bantuan
-│   └── functions.php           # Helper format rupiah, tanggal, dll
-├── pages/                      # Halaman publik untuk customer
-│   ├── cart.php                # Halaman keranjang belanja
-│   └── catalog.php             # Halaman katalog produk
-│   └── my_orders.php           # Detail pemesanan 
-│   └── order_detail.php        # Detail pemesanan 
-└── index.php                   # Entry point, redirect ke catalog
+│   └── buah_segar.sql          # Dump struktur tabel + seed data users & produk
+├── includes/                   # Helper functions global
+│   └── functions.php           # Format rupiah, format tanggal, slug generator, getCartItemCount
+├── pages/                      # Halaman customer (Role: Customer/Admin)
+│   ├── cart.php                # Tampilkan isi cart, update qty, tombol checkout
+│   ├── catalog.php             # List produk dengan filter, search, pagination/infinite scroll
+│   ├── my_orders.php           # Riwayat pesanan user yang login
+│   └── order_detail.php        # Detail item pesanan (produk, qty, harga, subtotal)
+└── index.php                   # Landing page: hero section, CTA ke catalog, redirect jika sudah login
 </code></pre>
