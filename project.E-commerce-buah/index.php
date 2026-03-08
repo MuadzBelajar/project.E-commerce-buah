@@ -99,7 +99,6 @@ function getProductBadge($index, $kategori) {
         .hero-inner { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; width: 100%; }
         .hero-text { animation: fadeUp .9s ease-out; }
         @keyframes fadeUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
-        .hero-tag { display: inline-flex; align-items: center; gap: .5rem; background: var(--primary-light); color: var(--primary); padding: .375rem .875rem; border-radius: 99px; font-size: .8125rem; font-weight: 600; margin-bottom: 1.25rem; }
         .hero-title { font-family: var(--font-display); font-size: clamp(2.25rem, 5vw, 4rem); font-weight: 800; line-height: 1.1; color: var(--text); margin-bottom: 1.25rem; letter-spacing: -.02em; }
         .title-accent { color: var(--primary); position: relative; display: inline-block; }
         .title-accent::after { content:''; position:absolute; bottom:6px; left:0; width:100%; height:14px; background:var(--accent); opacity:.3; z-index:-1; border-radius:4px; }
@@ -130,7 +129,8 @@ function getProductBadge($index, $kategori) {
         @keyframes fc1 { 0%,100%{transform:rotate(-2deg) translateY(0)} 50%{transform:rotate(2deg) translateY(-16px)} }
         @keyframes fc2 { 0%,100%{transform:rotate(3deg) translateY(0)} 50%{transform:rotate(-1deg) translateY(-12px)} }
         @keyframes fc3 { 0%,100%{transform:rotate(1deg) translateY(0)} 50%{transform:rotate(-2deg) translateY(-20px)} }
-       
+        .fruit-label { position:absolute; bottom:14px; left:12px; right:12px; padding:.5rem .875rem; background:rgba(255,255,255,.94); backdrop-filter:blur(8px); border-radius:var(--radius-md); font-weight:600; font-size:.8125rem; text-align:center; }
+
         /* ── FEATURES ── */
         .features { padding: 5rem 0; background: var(--bg-alt); }
         .features-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1.5rem; }
@@ -152,10 +152,9 @@ function getProductBadge($index, $kategori) {
         /* ── PRODUCT GRID — DESKTOP 4 col, tablet 3, mobile 3 ── */
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(3, 1fr);
             gap: 1.5rem;
             margin-bottom: 3rem;
-            justify-items: center;
         }
         .product-card {
             background: white;
@@ -165,11 +164,6 @@ function getProductBadge($index, $kategori) {
             transition: var(--t);
             cursor: pointer;
             width: 100%;
-        }
-        /* Center last row when it has fewer items than columns */
-        .products-grid::after {
-            content: '';
-            grid-column: span 2;
         }
         .product-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); border-color: transparent; }
 
@@ -379,6 +373,7 @@ function getProductBadge($index, $kategori) {
 <section id="home" class="hero">
     <div class="hero-inner">
         <div class="hero-text">
+           
             <h1 class="hero-title">
                 Kesegaran<br>
                 <span class="title-accent">Alami</span><br>
@@ -392,18 +387,19 @@ function getProductBadge($index, $kategori) {
                 </a>
                 <a href="#products" class="btn btn-outline">Lihat Produk</a>
             </div>
-           
+            
         </div>
         <div class="hero-visual">
             <div class="fruit-card fc-1">
                 <img src="https://images.unsplash.com/photo-1553279768-865429fa0078?w=600" alt="Mangga" loading="lazy">
-                </div>
+            </div>
             <div class="fruit-card fc-2">
                 <img src="https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?w=600" alt="Apel" loading="lazy">
                 </div>
             <div class="fruit-card fc-3">
                 <img src="https://images.unsplash.com/photo-1582979512210-99b6a53386f9?w=600" alt="Jeruk" loading="lazy">
-                </div>
+                
+            </div>
         </div>
     </div>
 </section>
