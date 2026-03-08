@@ -8,7 +8,7 @@ Website e-commerce penjualan buah segar berbasis PHP native.
 <img width="1366" height="692" alt="image" src="https://github.com/user-attachments/assets/6201c394-7ef9-4577-8d45-c76f3c6c553b" />
 
 
-## ✨ Fitur Utama
+## Informasi project
 
 ### 1. Struktur HTML
 - Semantic HTML5 (`&lt;header&gt;`, `&lt;nav&gt;`, `&lt;main&gt;`, `&lt;section&gt;`, `&lt;article&gt;`, `&lt;footer&gt;`)
@@ -71,7 +71,6 @@ Website e-commerce penjualan buah segar berbasis PHP native.
 | Customer | siti | siti123 |
 
 
-## Informasi project
 
 - **Backend**: PHP 8.x, MySQL, PDO
 - **Frontend**: HTML5, CSS3, Vanilla JavaScript
@@ -80,7 +79,7 @@ Website e-commerce penjualan buah segar berbasis PHP native.
 
 ## 📁 Struktur Folder
 <pre><code>
-ecommerce-project/
+project.E-commerce-buah/
 ├── admin/                      # Dashboard admin (Role: Admin only)
 │   ├── dashboard.php           # Statistik penjualan, total pesanan, stok menipis
 │   ├── orders.php              # Kelola pesanan: update status, hapus, filter by status
