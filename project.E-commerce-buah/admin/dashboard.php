@@ -214,6 +214,20 @@ $recent_orders = fetchAll("SELECT o.*, u.nama_lengkap, u.username
             .stats-grid { grid-template-columns: 1fr; }
             .main-content { padding: 0.5rem; }
         }
+
+        /* RESET MODAL */
+        .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.5); z-index: 9998; align-items: center; justify-content: center; }
+        .modal-overlay.open { display: flex; }
+        .modal-box { background: white; border-radius: 16px; padding: 2rem; max-width: 420px; width: 90%; box-shadow: var(--shadow-lg); animation: modalIn .25s ease-out; }
+        @keyframes modalIn { from{opacity:0;transform:scale(.95)} to{opacity:1;transform:scale(1)} }
+        .modal-icon { font-size: 3rem; text-align: center; margin-bottom: 1rem; }
+        .modal-title { font-family: var(--font-display); font-size: 1.375rem; font-weight: 700; text-align: center; margin-bottom: .5rem; color: var(--color-text); }
+        .modal-text { color: var(--color-text-light); text-align: center; font-size: .9rem; margin-bottom: 1.5rem; line-height: 1.6; }
+        .modal-text strong { color: var(--color-error); }
+        .modal-actions { display: flex; gap: .75rem; }
+        .btn-danger { background: var(--color-error); color: white; }
+        .btn-danger:hover { background: #b91c1c; transform: translateY(-1px); }
+        .modal-loading { display: none; text-align: center; padding: .5rem; font-size: .875rem; color: var(--color-text-light); }
     </style>
 </head>
 <body>
@@ -299,6 +313,9 @@ $recent_orders = fetchAll("SELECT o.*, u.nama_lengkap, u.username
                     <p style="color: var(--color-text-light);">Selamat datang kembali, <?php echo htmlspecialchars($admin['nama_lengkap']); ?>!</p>
                 </div>
                 <div class="page-actions">
+                    <button class="btn btn-secondary" id="btnResetPesanan" onclick="document.getElementById('resetModal').classList.add('open')">
+                         Reset Data Pesanan
+                    </button>
                     <a href="products.php?action=add" class="btn btn-primary">+ Tambah Produk</a>
                 </div>
             </div>
@@ -441,6 +458,27 @@ $recent_orders = fetchAll("SELECT o.*, u.nama_lengkap, u.username
         </main>
     </div>
     
+    <!-- RESET MODAL -->
+    <div class="modal-overlay" id="resetModal">
+        <div class="modal-box">
+            <div class="modal-icon">⚠️</div>
+            <div class="modal-title">Reset Semua Pesanan?</div>
+            <div class="modal-text">
+                Tindakan ini akan <strong>menghapus seluruh data pesanan</strong> dan mereset ID ke awal.<br>
+                Data yang dihapus <strong>tidak dapat dikembalikan.</strong>
+            </div>
+            <div class="modal-actions">
+                <button class="btn btn-secondary" style="flex:1" onclick="document.getElementById('resetModal').classList.remove('open')">
+                    Batal
+                </button>
+                <button class="btn btn-danger" style="flex:1" id="btnConfirmReset">
+                    Ya, Reset Sekarang
+                </button>
+            </div>
+            <div class="modal-loading" id="resetLoading"> Memproses...</div>
+        </div>
+    </div>
+
     <script>
         // Mobile menu toggle
         const mobileToggle = document.getElementById('mobileToggle');
@@ -480,6 +518,41 @@ $recent_orders = fetchAll("SELECT o.*, u.nama_lengkap, u.username
                 setTimeout(() => flash.remove(), 300);
             }
         }, 5000);
+
+        // Reset pesanan
+        document.getElementById('btnConfirmReset').addEventListener('click', async function() {
+            this.disabled = true;
+            this.textContent = 'Mereset...';
+            document.getElementById('resetLoading').style.display = 'block';
+            try {
+                const res  = await fetch('reset_orders.php', { method: 'POST' });
+                const data = await res.json();
+                if (data.success) {
+                    document.getElementById('resetModal').classList.remove('open');
+                    // Show success flash
+                    const flash = document.createElement('div');
+                    flash.className = 'flash-message flash-success';
+                    flash.textContent = '✅ ' + data.message;
+                    document.body.appendChild(flash);
+                    setTimeout(() => { flash.remove(); location.reload(); }, 2000);
+                } else {
+                    alert('Gagal: ' + data.message);
+                    this.disabled = false;
+                    this.textContent = 'Ya, Reset Sekarang';
+                    document.getElementById('resetLoading').style.display = 'none';
+                }
+            } catch(e) {
+                alert('Terjadi kesalahan koneksi');
+                this.disabled = false;
+                this.textContent = 'Ya, Reset Sekarang';
+                document.getElementById('resetLoading').style.display = 'none';
+            }
+        });
+
+        // Close modal on overlay click
+        document.getElementById('resetModal').addEventListener('click', function(e) {
+            if (e.target === this) this.classList.remove('open');
+        });
     </script>
 </body>
 </html>

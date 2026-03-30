@@ -471,7 +471,7 @@ function getImagePath($filename) {
                                     <td><?php echo formatTanggal($order['created_at'], 'pendek'); ?></td>
                                     <td>
                                         <div class="actions">
-                                            <a href="orders.php?action=view&id=<?php echo $order['id']; ?>" class="action-btn view" title="Lihat Detail">👁️</a>
+                                            <a href="orders.php?action=view&id=<?php echo $order['id']; ?>" class="action-btn view" title="Lihat Detail">✍🏻</a>
                                             <a href="orders.php?delete=<?php echo $order['id']; ?>" class="action-btn delete" title="Hapus" onclick="return confirm('Yakin ingin menghapus pesanan ini?')">🗑️</a>
                                         </div>
                                     </td>
