@@ -30,6 +30,9 @@ Website e-commerce penjualan buah segar berbasis PHP native.
 | **Delete** | Hapus dengan konfirmasi |
 | **Error Handling** | Try-catch, user-friendly messages |
 
+<img width="1366" height="642" alt="image" src="https://github.com/user-attachments/assets/a2bac94b-b0ac-4f47-9fc8-4385d45b24a8" />
+
+
 ### 4. Database Integration
 - PDO connection dengan prepared statements
 - Foreign key constraints & data validation
