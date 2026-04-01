@@ -278,7 +278,7 @@ function getCartImage($filename) {
             <div class="modal-footer">
                 <button class="btn-cancel" id="btnCancel" type="button">Batal</button>
                 <button class="btn-submit-order" id="btnSubmitOrder" type="button">
-                    <span id="submitText">✅ Konfirmasi Pesanan</span>
+                    <span id="submitText"> Konfirmasi Pesanan</span>
                     <div class="spinner" id="submitSpinner"></div>
                 </button>
             </div>
@@ -293,8 +293,8 @@ function getCartImage($filename) {
             <p class="success-text">Pesanan kamu sudah masuk dan sedang diproses oleh admin.</p>
             <p class="success-order-id" id="successOrderId"></p>
             <div class="success-actions">
-                <a href="#" id="btnLihatPesanan" class="btn-success">📋 Lihat Pesanan Saya</a>
-                <a href="catalog.php" class="btn-success-outline">🛍️ Belanja Lagi</a>
+                <a href="#" id="btnLihatPesanan" class="btn-success"> Lihat Pesanan Saya</a>
+                <a href="catalog.php" class="btn-success-outline">🛍️Belanja Lagi</a>
             </div>
         </div>
     </div>
@@ -364,7 +364,7 @@ function getCartImage($filename) {
                         <span class="label">Total</span>
                         <span class="value" id="grandTotal">Rp <?php echo number_format($total, 0, ',', '.'); ?></span>
                     </div>
-                    <button class="btn-checkout" id="btnCheckout" type="button">✅ Checkout Sekarang</button>
+                    <button class="btn-checkout" id="btnCheckout" type="button">Checkout Sekarang</button>
                     <a href="catalog.php" class="btn-back-link">← Lanjut Belanja</a>
                 </div>
             </div>

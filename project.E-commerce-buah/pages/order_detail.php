@@ -360,8 +360,8 @@ $si = statusInfo($order['status']);
                     <div class="card">
                         <div class="card-body">
                             <div class="action-btns">
-                                <a href="catalog.php" class="btn-action primary">🛍️ Belanja Lagi</a>
-                                <a href="my_orders.php" class="btn-action outline">📋 Semua Pesanan</a>
+                                <a href="catalog.php" class="btn-action primary"> Belanja Lagi</a>
+                                <a href="my_orders.php" class="btn-action outline"> Semua Pesanan</a>
                             </div>
                         </div>
                     </div>

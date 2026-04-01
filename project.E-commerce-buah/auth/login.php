@@ -129,12 +129,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         body { font-family: var(--font-body); background: linear-gradient(135deg, #FAFAFA 0%, var(--color-primary-light) 100%); min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 2rem; }
         .login-container { width: 100%; max-width: 420px; animation: fadeInUp 0.6s ease-out; }
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-        .login-logo { text-align: center; margin-bottom: 2rem; }
-        .logo-icon { font-size: 3rem; margin-bottom: 0.5rem; animation: float 3s ease-in-out infinite; }
         @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-8px); } }
-        .logo-text { font-family: var(--font-display); font-size: 2rem; font-weight: 700; color: var(--color-primary); }
-        .logo-tagline { font-size: 0.875rem; color: var(--color-text-light); margin-top: 0.25rem; }
-        .login-card { background: white; border-radius: 20px; padding: 2.5rem; box-shadow: var(--shadow-lg); }
+         .login-card { background: white; border-radius: 20px; padding: 2.5rem; box-shadow: var(--shadow-lg); }
         .login-title { font-family: var(--font-display); font-size: 1.75rem; font-weight: 700; color: var(--color-text); text-align: center; margin-bottom: 0.5rem; }
         .login-subtitle { text-align: center; color: var(--color-text-light); font-size: 0.9375rem; margin-bottom: 2rem; }
         .alert { padding: 1rem 1.25rem; border-radius: 12px; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem; animation: slideIn 0.3s ease-out; }
@@ -185,12 +181,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </style>
 </head>
 <body>
-    <div class="login-container">
-        <div class="login-logo">
-            <div class="logo-icon">🍎</div>
-            <div class="logo-text">Buah Segar</div>
-            <div class="logo-tagline">Kesegaran Alami Setiap Hari</div>
-        </div>
+    <div class="login-container">     
         <div class="login-card">
             <h1 class="login-title">Selamat Datang Kembali</h1>
             <p class="login-subtitle">Silakan masuk untuk melanjutkan</p>

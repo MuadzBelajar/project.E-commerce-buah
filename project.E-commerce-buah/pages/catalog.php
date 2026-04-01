@@ -395,7 +395,7 @@ body{font-family:var(--font-body);background:var(--bg-alt);color:var(--text);lin
               data-search="<?php echo htmlspecialchars($search); ?>"
               data-filter="<?php echo htmlspecialchars($filter); ?>"
               data-total="<?php echo $total_products; ?>">
-        <span id="loadMoreText">🔄 Muat Lebih Banyak</span>
+        <span id="loadMoreText"> Muat Lebih Banyak</span>
         <span class="spinner" id="loadMoreSpinner"
               style="border-color:rgba(45,134,89,.25);border-top-color:var(--primary)"></span>
       </button>
@@ -530,7 +530,7 @@ if(btnMore){
                 document.getElementById('shownCount').textContent=newOffset;
                 document.getElementById('loadMoreCount').textContent='Menampilkan '+newOffset+' dari '+data.total+' produk';
                 if(newOffset>=data.total){
-                    document.getElementById('loadMoreWrap').innerHTML='<p class="load-more-done">✅ Semua '+data.total+' produk sudah ditampilkan</p>';
+                    document.getElementById('loadMoreWrap').innerHTML='<p class="load-more-done"> Semua '+data.total+' produk sudah ditampilkan</p>';
                     return;
                 }
             }else{showToast('Gagal memuat produk','error');}
