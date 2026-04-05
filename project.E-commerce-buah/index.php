@@ -43,6 +43,7 @@ function getProductBadge($index, $kategori) {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
+
         :root {
             --primary:       #2D8659;
             --primary-dark:  #1F5F3F;
@@ -52,9 +53,14 @@ function getProductBadge($index, $kategori) {
             --text:          #1A1A1A;
             --text-light:    #666666;
             --text-lighter:  #999999;
-            --bg:            #FFFFFF;
-            --bg-alt:        #FAFAFA;
-            --border:        #E5E5E5;
+
+            /* ── SEMUA BG SERAGAM ── */
+            --bg:            #ffffff;
+            --bg-alt:        #f0faf4;
+
+            --border:        #d4ead9;   /* border sedikit lebih hijau agar menyatu */
+            --card-bg:       #ffffff;   /* kartu/card tetap putih agar kontras */
+
             --font-display:  'Playfair Display', serif;
             --font-body:     'DM Sans', sans-serif;
             --shadow-sm:  0 2px 8px rgba(0,0,0,.04);
@@ -68,14 +74,28 @@ function getProductBadge($index, $kategori) {
         }
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
-        body { font-family: var(--font-body); color: var(--text); background: var(--bg); line-height: 1.6; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+        body {
+            font-family: var(--font-body);
+            color: var(--text);
+            background: linear-gradient(135deg, #f0faf4 0%, #fff 60%);
+            background-attachment: fixed;
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
         img { max-width: 100%; height: auto; display: block; }
         a { text-decoration: none; color: inherit; transition: var(--t); }
         ul { list-style: none; }
         .container { max-width: 1280px; margin: 0 auto; padding: 0 2rem; }
 
         /* ── NAVBAR ── */
-        .navbar { position: fixed; top: 0; left: 0; right: 0; background: rgba(255,255,255,.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); z-index: 1000; }
+        .navbar {
+            position: fixed; top: 0; left: 0; right: 0;
+            background: rgba(255,255,255,.97);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+        }
         .nav-inner { max-width: 1280px; margin: 0 auto; padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 68px; gap: 1rem; }
         .nav-logo { display: flex; align-items: center; gap: .625rem; font-weight: 700; }
         .logo-fruit { font-size: 1.75rem; animation: float 3s ease-in-out infinite; }
@@ -95,7 +115,7 @@ function getProductBadge($index, $kategori) {
         .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px,-5px); }
 
         /* ── HERO ── */
-        .hero { min-height: 100vh; display: flex; align-items: center; padding: 100px 2rem 4rem; background: linear-gradient(135deg, #f0faf4 0%, #fff 60%); }
+        .hero { min-height: 100vh; display: flex; align-items: center; padding: 100px 2rem 4rem; background: transparent; }
         .hero-inner { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; width: 100%; }
         .hero-text { animation: fadeUp .9s ease-out; }
         @keyframes fadeUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
@@ -112,7 +132,6 @@ function getProductBadge($index, $kategori) {
         .btn-white { background: white; color: var(--primary); }
         .btn-white:hover { background: var(--primary-light); transform: translateY(-2px); box-shadow: var(--shadow-lg); }
         .hero-stats { display: flex; gap: 2rem; margin-top: 2.5rem; }
-        .stat { }
         .stat-num { font-family: var(--font-display); font-size: 1.75rem; font-weight: 700; color: var(--primary); display: block; }
         .stat-label { font-size: .8125rem; color: var(--text-lighter); }
 
@@ -132,9 +151,9 @@ function getProductBadge($index, $kategori) {
         .fruit-label { position:absolute; bottom:14px; left:12px; right:12px; padding:.5rem .875rem; background:rgba(255,255,255,.94); backdrop-filter:blur(8px); border-radius:var(--radius-md); font-weight:600; font-size:.8125rem; text-align:center; }
 
         /* ── FEATURES ── */
-        .features { padding: 5rem 0; background: var(--bg-alt); }
+        .features { padding: 5rem 0; background: transparent; }
         .features-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1.5rem; }
-        .feature-card { text-align:center; padding: 2rem 1.5rem; background: white; border-radius: var(--radius-lg); border: 1px solid var(--border); transition: var(--t); }
+        .feature-card { text-align:center; padding: 2rem 1.5rem; background: var(--card-bg); border-radius: var(--radius-lg); border: 1px solid var(--border); transition: var(--t); }
         .feature-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: var(--primary-light); }
         .feature-icon { font-size: 2.5rem; margin-bottom: 1rem; }
         .feature-card h3 { font-family: var(--font-display); font-size: 1.125rem; margin-bottom: .5rem; }
@@ -147,9 +166,8 @@ function getProductBadge($index, $kategori) {
         .section-sub { font-size: 1rem; color: var(--text-light); }
 
         /* ── PRODUCTS SHOWCASE ── */
-        .products-showcase { padding: 5rem 0; }
+        .products-showcase { padding: 5rem 0; background: transparent; }
 
-        /* ── PRODUCT GRID — DESKTOP 4 col, tablet 3, mobile 3 ── */
         .products-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -157,7 +175,7 @@ function getProductBadge($index, $kategori) {
             margin-bottom: 3rem;
         }
         .product-card {
-            background: white;
+            background: var(--card-bg);
             border-radius: var(--radius-lg);
             overflow: hidden;
             border: 1px solid var(--border);
@@ -167,7 +185,6 @@ function getProductBadge($index, $kategori) {
         }
         .product-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); border-color: transparent; }
 
-        /* Gambar square aspect ratio */
         .product-image {
             position: relative;
             width: 100%;
@@ -213,12 +230,12 @@ function getProductBadge($index, $kategori) {
         .section-cta { text-align: center; }
 
         /* ── ABOUT ── */
-        .about { padding: 5rem 0; background: var(--primary-light); }
+        .about { padding: 5rem 0; background: transparent; }
         .about-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
         .about-title { font-family: var(--font-display); font-size: clamp(1.75rem, 3.5vw, 2.5rem); font-weight: 700; margin-bottom: 1.25rem; }
         .about-desc { color: var(--text-light); line-height: 1.8; margin-bottom: 1rem; font-size: 1rem; }
         .about-stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; margin-top: 2rem; }
-        .stat-card { text-align: center; padding: 1.25rem 1rem; background: white; border-radius: var(--radius-md); box-shadow: var(--shadow-sm); }
+        .stat-card { text-align: center; padding: 1.25rem 1rem; background: var(--card-bg); border-radius: var(--radius-md); box-shadow: var(--shadow-sm); border: 1px solid var(--border); }
         .stat-num-lg { font-family: var(--font-display); font-size: 2rem; font-weight: 700; color: var(--primary); display: block; }
         .stat-lbl { font-size: .8125rem; color: var(--text-light); display: block; }
         .about-img { border-radius: var(--radius-xl); overflow: hidden; box-shadow: var(--shadow-xl); aspect-ratio: 4/3; }
@@ -226,10 +243,10 @@ function getProductBadge($index, $kategori) {
         .about-img:hover img { transform: scale(1.04); }
 
         /* ── CTA BANNER ── */
-        .cta-banner { padding: 5rem 0; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; }
+        .cta-banner { padding: 5rem 0; background: transparent; color: var(--text); }
         .cta-inner { text-align: center; max-width: 640px; margin: 0 auto; }
-        .cta-title { font-family: var(--font-display); font-size: clamp(1.75rem, 4vw, 2.75rem); font-weight: 700; margin-bottom: 1rem; }
-        .cta-sub { font-size: 1.0625rem; margin-bottom: 2rem; opacity: .9; }
+        .cta-title { font-family: var(--font-display); font-size: clamp(1.75rem, 4vw, 2.75rem); font-weight: 700; margin-bottom: 1rem; color: var(--text); }
+        .cta-sub { font-size: 1.0625rem; margin-bottom: 2rem; color: var(--text-light); }
 
         /* ── FOOTER ── */
         .footer { background: var(--text); color: white; padding: 4rem 0 1.5rem; }
@@ -247,7 +264,6 @@ function getProductBadge($index, $kategori) {
            RESPONSIVE
         ══════════════════════════════════ */
 
-        /* Tablet: 768–1023px */
         @media (max-width: 1023px) {
             .features-grid { grid-template-columns: repeat(2,1fr); }
             .products-grid { grid-template-columns: repeat(3,1fr); gap: 1rem; }
@@ -261,15 +277,13 @@ function getProductBadge($index, $kategori) {
             .fc-3 { width:170px; height:205px; }
         }
 
-        /* Mobile: <768px */
         @media (max-width: 767px) {
             .container { padding: 0 1rem; }
 
-            /* Navbar mobile */
             .nav-inner { padding: 0 1rem; height: 60px; }
             .nav-menu {
                 position: fixed; top: 60px; left: -100%; width: 100%;
-                height: calc(100vh - 60px); background: white;
+                height: calc(100vh - 60px); background: var(--bg);
                 flex-direction: column; align-items: center; justify-content: center;
                 gap: 2rem; transition: left .3s ease; z-index: 999;
                 box-shadow: var(--shadow-lg);
@@ -279,10 +293,9 @@ function getProductBadge($index, $kategori) {
             .hamburger { display: flex; }
             .nav-actions .nav-cta { padding: .4375rem 1rem; font-size: .8125rem; }
 
-            /* Hero mobile — stacked, compact */
             .hero { padding: 80px 1rem 3rem; min-height: auto; }
             .hero-inner { grid-template-columns: 1fr; gap: 0; }
-            .hero-visual { display: none; } /* Sembunyikan floating cards di mobile */
+            .hero-visual { display: none; }
             .hero-title { font-size: 2.125rem; }
             .hero-sub { font-size: .9375rem; }
             .hero-btns { gap: .75rem; }
@@ -290,49 +303,43 @@ function getProductBadge($index, $kategori) {
             .hero-stats { gap: 1.5rem; flex-wrap: wrap; }
             .stat-num { font-size: 1.375rem; }
 
-            /* Features mobile — 2 kolom */
             .features { padding: 3rem 0; }
             .features-grid { grid-template-columns: repeat(2,1fr); gap: 1rem; }
             .feature-card { padding: 1.25rem 1rem; }
             .feature-icon { font-size: 2rem; margin-bottom: .75rem; }
             .feature-card h3 { font-size: 1rem; }
 
-            /* ★ PRODUCTS GRID MOBILE — 3 KOLOM SHOPEE-LIKE ★ */
             .products-showcase { padding: 3rem 0; }
             .products-grid {
                 grid-template-columns: repeat(3, 1fr);
                 gap: 0.5rem;
             }
             .product-card { border-radius: 10px; }
-            .product-card:hover { transform: none; } /* No hover on touch */
+            .product-card:hover { transform: none; }
             .product-info { padding: .5rem .5rem .625rem; }
             .product-name { font-size: .75rem; font-weight: 600; -webkit-line-clamp: 2; margin-bottom: .25rem; }
-            .product-origin { display: none; } /* Sembunyikan di mobile */
+            .product-origin { display: none; }
             .product-price { font-size: .9375rem; font-weight: 700; }
-            .product-price small { display: none; } /* Sembunyikan "/kg" */
-            .product-stock { display: none; } /* Sembunyikan stok */
+            .product-price small { display: none; }
+            .product-stock { display: none; }
             .product-badge { font-size: .6rem; padding: 2px 6px; top: 6px; right: 6px; }
-            .product-overlay { display: none; } /* No overlay on mobile */
+            .product-overlay { display: none; }
             .section-header { margin-bottom: 1.5rem; }
             .section-title { font-size: 1.5rem; }
 
-            /* About mobile */
             .about { padding: 3rem 0; }
             .about-inner { grid-template-columns: 1fr; gap: 1.5rem; }
             .about-img { order: -1; aspect-ratio: 16/9; }
             .about-stats { grid-template-columns: repeat(3,1fr); gap: .75rem; }
             .stat-num-lg { font-size: 1.5rem; }
 
-            /* CTA */
             .cta-banner { padding: 3rem 0; }
             .cta-title { font-size: 1.75rem; }
 
-            /* Footer mobile */
             .footer { padding: 3rem 0 1.25rem; }
             .footer-grid { grid-template-columns: 1fr; gap: 1.75rem; }
         }
 
-        /* Small mobile: <480px */
         @media (max-width: 479px) {
             .hero-title { font-size: 1.875rem; }
             .features-grid { grid-template-columns: repeat(2,1fr); }
@@ -373,7 +380,6 @@ function getProductBadge($index, $kategori) {
 <section id="home" class="hero">
     <div class="hero-inner">
         <div class="hero-text">
-           
             <h1 class="hero-title">
                 Kesegaran<br>
                 <span class="title-accent">Alami</span><br>
@@ -387,7 +393,6 @@ function getProductBadge($index, $kategori) {
                 </a>
                 <a href="#products" class="btn btn-outline">Lihat Produk</a>
             </div>
-            
         </div>
         <div class="hero-visual">
             <div class="fruit-card fc-1">
@@ -395,10 +400,9 @@ function getProductBadge($index, $kategori) {
             </div>
             <div class="fruit-card fc-2">
                 <img src="https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?w=600" alt="Apel" loading="lazy">
-                </div>
+            </div>
             <div class="fruit-card fc-3">
                 <img src="https://images.unsplash.com/photo-1582979512210-99b6a53386f9?w=600" alt="Jeruk" loading="lazy">
-                
             </div>
         </div>
     </div>
@@ -494,7 +498,7 @@ function getProductBadge($index, $kategori) {
         <div class="cta-inner">
             <h2 class="cta-title">Siap Hidup Lebih Sehat?</h2>
             <p class="cta-sub">Mulai belanja buah segar hari ini dan rasakan perbedaannya</p>
-            <a href="pages/catalog.php" class="btn btn-white">
+            <a href="pages/catalog.php" class="btn btn-primary">
                 Mulai Belanja
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>
@@ -542,7 +546,6 @@ function getProductBadge($index, $kategori) {
 </footer>
 
 <script>
-    // Hamburger menu
     const hamburger = document.getElementById('hamburger');
     const navMenu   = document.getElementById('navMenu');
     hamburger.addEventListener('click', (e) => {
@@ -566,7 +569,6 @@ function getProductBadge($index, $kategori) {
         });
     });
 
-    // Smooth scroll
     document.querySelectorAll('a[href^="#"]').forEach(a => {
         a.addEventListener('click', (e) => {
             e.preventDefault();
@@ -575,7 +577,6 @@ function getProductBadge($index, $kategori) {
         });
     });
 
-    // Navbar shadow on scroll
     const navbar = document.querySelector('.navbar');
     window.addEventListener('scroll', () => {
         navbar.style.boxShadow = window.scrollY > 60 ? '0 2px 16px rgba(0,0,0,.08)' : '';
