@@ -57,7 +57,7 @@ try {
         }
     }
 
-    // 2. Hitung total
+    // 2. Hitung total 
     $total_harga = 0;
     foreach ($_SESSION['cart'] as $item) {
         $total_harga += $item['harga_kg'] * $item['qty'];

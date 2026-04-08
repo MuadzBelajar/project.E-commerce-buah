@@ -53,13 +53,19 @@ try { $products = fetchAll($sql, $params); } catch (Exception $e) { $products = 
 :root {
     --primary:#2D8659; --primary-dark:#1F5F3F; --primary-light:#E8F5ED;
     --secondary:#FF8C42; --text:#1A1A1A; --text-light:#666; --text-lighter:#999;
-    --bg:#fff; --bg-alt:#F5F7FA; --border:#E5E5E5; --error:#DC2626; --success:#16A34A;
+    --bg:#ffffff; --bg-alt:#f0faf4; --border:#d4ead9; --error:#DC2626; --success:#16A34A;
     --font-display:'Playfair Display',serif; --font-body:'DM Sans',sans-serif;
     --shadow-sm:0 2px 8px rgba(0,0,0,.04); --shadow-md:0 4px 16px rgba(0,0,0,.08);
     --shadow-lg:0 8px 32px rgba(0,0,0,.12); --t:280ms cubic-bezier(.4,0,.2,1);
 }
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-body{font-family:var(--font-body);background:var(--bg-alt);color:var(--text);line-height:1.6}
+body{
+    font-family:var(--font-body);
+    background: linear-gradient(135deg, #f0faf4 0%, #fff 60%);
+    background-attachment: fixed;
+    color:var(--text);
+    line-height:1.6
+}
 .container{max-width:1280px;margin:0 auto;padding:0 2rem}
 
 /* NAVBAR */
@@ -99,13 +105,24 @@ body{font-family:var(--font-body);background:var(--bg-alt);color:var(--text);lin
 .mobile-menu .m-user{padding:.75rem 1rem .5rem;font-size:.8125rem;color:var(--text-light);border-bottom:1px solid var(--border);margin-bottom:.25rem}
 .mobile-menu .m-user strong{color:var(--text);display:block;font-size:.9rem}
 
-/* PAGE HEADER */
-.page-header{padding:2.5rem 0 2rem;background:linear-gradient(135deg,var(--primary-light) 0%,#fff 100%)}
-.page-title{font-family:var(--font-display);font-size:2.25rem;font-weight:700;color:var(--text);margin-bottom:.375rem}
-.page-subtitle{font-size:1rem;color:var(--text-light)}
+/* JUDUL HALAMAN - LANGSUNG DALAM CONTAINER */
+.catalog-title {
+    padding: 2rem 0 0.5rem 0;
+}
+.catalog-title h1 {
+    font-family: var(--font-display);
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 0.375rem;
+}
+.catalog-title p {
+    font-size: 1rem;
+    color: var(--text-light);
+}
 
 /* TOOLBAR */
-.toolbar{padding:1.25rem 0;display:flex;gap:.875rem;flex-wrap:wrap;align-items:center}
+.toolbar{padding:1rem 0 1.25rem;display:flex;gap:.875rem;flex-wrap:wrap;align-items:center}
 .search-box{flex:1;min-width:200px;position:relative}
 .search-input{width:100%;padding:.75rem 1rem .75rem 2.75rem;border:2px solid var(--border);border-radius:12px;font-size:.9375rem;font-family:var(--font-body);transition:var(--t);background:#fff}
 .search-input:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 3px rgba(45,134,89,.1)}
@@ -117,7 +134,7 @@ body{font-family:var(--font-body);background:var(--bg-alt);color:var(--text);lin
 .product-count{font-size:.8125rem;color:var(--text-light);width:100%}
 
 /* PRODUCTS GRID — desktop */
-.products-section{padding:1.5rem 0 4rem}
+.products-section{padding:0 0 4rem}
 .products-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.5rem}
 
 /* PRODUCT CARD */
@@ -201,9 +218,10 @@ body{font-family:var(--font-body);background:var(--bg-alt);color:var(--text);lin
     /* Swap navbar: hide desktop, show mobile */
     .nav-desktop{display:none}
     .nav-mobile{display:flex}
-    .page-header{padding:1.5rem 0 1.25rem}
-    .page-title{font-size:1.5rem}.page-subtitle{font-size:.875rem}
-    .toolbar{padding:1rem 0;gap:.625rem}
+    .catalog-title{padding:1rem 0 0.25rem 0}
+    .catalog-title h1{font-size:1.5rem}
+    .catalog-title p{font-size:.875rem}
+    .toolbar{padding:0.5rem 0 1rem;gap:.625rem}
     .search-box{min-width:0;width:100%;flex:none}
     .filter-group{gap:.5rem;width:100%}
     .filter-btn{padding:.5rem .875rem;font-size:.8125rem;flex:1;text-align:center;justify-content:center}
@@ -260,7 +278,7 @@ body{font-family:var(--font-body);background:var(--bg-alt);color:var(--text);lin
       <span class="logo-text">Buah Segar</span>
     </a>
 
-    <!-- DESKTOP: semua tombol tampil -->
+    <!-- DESKTOP -->
     <div class="nav-desktop">
       <span class="nav-greeting">Halo, <strong><?php echo htmlspecialchars($user['nama_lengkap']); ?></strong></span>
       <?php if (isAdmin()): ?>
@@ -276,7 +294,7 @@ body{font-family:var(--font-body);background:var(--bg-alt);color:var(--text);lin
       <a href="../auth/logout.php" class="nav-btn solid">Logout</a>
     </div>
 
-    <!-- MOBILE: ikon keranjang + hamburger -->
+    <!-- MOBILE -->
     <div class="nav-mobile">
       <a href="cart.php" class="cart-icon-btn" id="cartLinkMobile">
         🛒
@@ -303,10 +321,11 @@ body{font-family:var(--font-body);background:var(--bg-alt);color:var(--text);lin
   </div>
 </nav>
 
-<div class="page-header">
-  <div class="container">
-    <h1 class="page-title">Katalog Buah Segar</h1>
-    <p class="page-subtitle">Pilih buah favorit Anda dan pesan sekarang!</p>
+<!-- JUDUL HALAMAN LANGSUNG DALAM CONTAINER (tanpa background terpisah) -->
+<div class="container">
+  <div class="catalog-title">
+    <h1>Katalog Buah Segar</h1>
+    <p>Pilih buah favorit Anda dan pesan sekarang!</p>
   </div>
 </div>
 

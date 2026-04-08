@@ -180,41 +180,12 @@ $recent_orders = fetchAll("SELECT o.*, u.nama_lengkap, u.username
         .alert-text { font-size: 0.8125rem; color: var(--color-text-light); }
         .alert-stock { font-weight: 600; color: var(--color-error); }
         
-        /* QUICK ACTIONS */
-        .quick-actions { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-top: 1.5rem; }
-        .quick-action { display: flex; align-items: center; gap: 1rem; padding: 1.25rem; background: var(--color-white); border-radius: 12px; border: 1px solid var(--color-border); text-decoration: none; color: var(--color-text); transition: var(--transition); }
-        .quick-action:hover { background: var(--color-primary); color: white; border-color: var(--color-primary); transform: translateY(-2px); box-shadow: var(--shadow-md); }
-        .quick-action-icon { width: 48px; height: 48px; background: var(--color-primary-light); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; transition: var(--transition); }
-        .quick-action:hover .quick-action-icon { background: rgba(255,255,255,0.2); }
-        .quick-action-text { font-weight: 600; }
-        .quick-action-desc { font-size: 0.8125rem; opacity: 0.8; }
-        
         /* FLASH MESSAGE */
         .flash-message { position: fixed; top: 20px; right: 20px; padding: 1rem 1.5rem; border-radius: 12px; box-shadow: var(--shadow-lg); animation: slideIn 0.3s ease-out; z-index: 9999; max-width: 400px; }
         .flash-success { background: #D1FAE5; color: var(--color-success); border: 1px solid #86EFAC; }
         .flash-error { background: #FEE2E2; color: var(--color-error); border: 1px solid #FCA5A5; }
         @keyframes slideIn { from { opacity: 0; transform: translateX(100px); } to { opacity: 1; transform: translateX(0); } }
         
-        /* RESPONSIVE */
-        @media (max-width: 768px) {
-            .mobile-header { display: flex; }
-            .sidebar { transform: translateX(-100%); }
-            .sidebar.active { transform: translateX(0); box-shadow: var(--shadow-lg); }
-            .sidebar-overlay.active { display: block; }
-            .main-content { margin-left: 0; padding: 1rem; margin-top: 60px; }
-            .stats-grid { grid-template-columns: repeat(2, 1fr); }
-            .dashboard-grid { grid-template-columns: 1fr; }
-            .page-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
-            .quick-actions { grid-template-columns: 1fr; }
-            .page-title { font-size: 1.5rem; }
-            .btn { width: 100%; justify-content: center; }
-        }
-        
-        @media (max-width: 480px) {
-            .stats-grid { grid-template-columns: 1fr; }
-            .main-content { padding: 0.5rem; }
-        }
-
         /* RESET MODAL */
         .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.5); z-index: 9998; align-items: center; justify-content: center; }
         .modal-overlay.open { display: flex; }
@@ -228,6 +199,25 @@ $recent_orders = fetchAll("SELECT o.*, u.nama_lengkap, u.username
         .btn-danger { background: var(--color-error); color: white; }
         .btn-danger:hover { background: #b91c1c; transform: translateY(-1px); }
         .modal-loading { display: none; text-align: center; padding: .5rem; font-size: .875rem; color: var(--color-text-light); }
+        
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .mobile-header { display: flex; }
+            .sidebar { transform: translateX(-100%); }
+            .sidebar.active { transform: translateX(0); box-shadow: var(--shadow-lg); }
+            .sidebar-overlay.active { display: block; }
+            .main-content { margin-left: 0; padding: 1rem; margin-top: 60px; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .dashboard-grid { grid-template-columns: 1fr; }
+            .page-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
+            .page-title { font-size: 1.5rem; }
+            .btn { width: 100%; justify-content: center; }
+        }
+        
+        @media (max-width: 480px) {
+            .stats-grid { grid-template-columns: 1fr; }
+            .main-content { padding: 0.5rem; }
+        }
     </style>
 </head>
 <body>
@@ -426,31 +416,6 @@ $recent_orders = fetchAll("SELECT o.*, u.nama_lengkap, u.username
                         </div>
                         <div class="card-footer">
                             <a href="products.php" class="btn btn-secondary btn-sm" style="width: 100%; justify-content: center;">Kelola Produk</a>
-                        </div>
-                    </div>
-                    
-                    <!-- Quick Actions -->
-                    <div class="card">
-                        <div class="card-header">
-                            <h2 class="card-title">Aksi Cepat</h2>
-                        </div>
-                        <div class="card-body">
-                            <div class="quick-actions">
-                                <a href="products.php?action=add" class="quick-action">
-                                    <div class="quick-action-icon">➕</div>
-                                    <div>
-                                        <div class="quick-action-text">Tambah Produk</div>
-                                        <div class="quick-action-desc">Buah baru</div>
-                                    </div>
-                                </a>
-                                <a href="orders.php" class="quick-action">
-                                    <div class="quick-action-icon">📋</div>
-                                    <div>
-                                        <div class="quick-action-text">Kelola Pesanan</div>
-                                        <div class="quick-action-desc">Update status</div>
-                                    </div>
-                                </a>
-                            </div>
                         </div>
                     </div>
                 </div>
