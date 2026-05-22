@@ -1,12 +1,7 @@
-<img width="1366" height="687" alt="image" src="https://github.com/user-attachments/assets/ce302b28-ee1e-418f-8f18-d1d501ac0f7f" />
-
-<img width="1366" height="692" alt="image" src="https://github.com/user-attachments/assets/6201c394-7ef9-4577-8d45-c76f3c6c553b" />
-
-<img width="1366" height="642" alt="image" src="https://github.com/user-attachments/assets/a2bac94b-b0ac-4f47-9fc8-4385d45b24a8" />
-
 # 🍎 Buah Segar — E-Commerce Penjualan Buah Segar
-
 Buah Segar adalah aplikasi web e-commerce berbasis **PHP Native** untuk penjualan buah segar secara online. Aplikasi ini menyediakan katalog produk dengan filter dan pencarian, sistem keranjang belanja berbasis database, proses checkout dengan manajemen stok otomatis, serta dashboard admin untuk mengelola produk dan pesanan secara real-time. Tujuan pembelajaran dari proyek ini adalah implementasi sistem web full-stack lengkap: mulai dari autentikasi berbasis peran, operasi CRUD yang aman, hingga penanganan transaksi database yang konsisten.
+
+<img width="1366" height="687" alt="image" src="https://github.com/user-attachments/assets/ce302b28-ee1e-418f-8f18-d1d501ac0f7f" />
 
 ---
 
@@ -86,6 +81,9 @@ http://localhost/project.E-commerce-buah
 | Customer | `siti` | `siti123` |
 | Customer | `andi` | `andi123` |
 
+<img width="1366" height="688" alt="image" src="https://github.com/user-attachments/assets/fd54bd89-dec3-4d58-a301-b51eebe8a3ff" />
+
+
 ---
 
 ## 📝 Pemetaan Rubrik Penilaian
@@ -108,6 +106,9 @@ Seluruh operasi CRUD diimplementasikan penuh di modul admin (`admin/products.php
 | **Read** | Daftar produk dengan filter kategori, pencarian, dan badge stok (merah/kuning/hijau) |
 | **Update** | Form edit dengan data terisi otomatis (*pre-filled*) dari database |
 | **Delete** | Hapus produk beserta file gambar fisiknya, dengan konfirmasi di sisi klien |
+
+<img width="1366" height="686" alt="image" src="https://github.com/user-attachments/assets/19e3eb0d-dee8-4858-8284-e52e3bcf31a0" />
+
 
 > **Mengapa CRUD Penting dalam Aplikasi Web?**
 > CRUD (Create, Read, Update, Delete) adalah fondasi dari hampir semua aplikasi web dinamis. Tanpa CRUD, aplikasi hanya bisa menampilkan data statis — tidak bisa menerima, mengolah, atau memperbarui informasi baru. Dalam konteks Buah Segar, CRUD memastikan data produk, stok, pesanan, dan akun pengguna selalu akurat dan dapat dikelola secara real-time, persis seperti yang dibutuhkan oleh sistem informasi bisnis nyata.
@@ -141,6 +142,10 @@ Sistem autentikasi dikelola melalui `auth/check_session.php`:
 
 Setiap halaman admin memvalidasi role melalui fungsi `requireAdmin()`. Halaman customer memvalidasi login melalui `checkLogin()`. Pengguna yang belum login atau mengakses halaman di luar hak aksesnya akan diarahkan otomatis ke halaman login.
 
+<img width="1366" height="686" alt="image" src="https://github.com/user-attachments/assets/53712107-3f32-429b-9110-0c0388e8f432" />
+<img width="1366" height="693" alt="image" src="https://github.com/user-attachments/assets/2af9919e-f188-44b2-8ead-b80b247d5381" />
+
+
 ### 7. Validasi Input (Dua Lapis)
 
 **Sisi klien (HTML5):** Atribut `required`, `min`, `max`, dan `pattern` pada form mencegah data kosong atau tidak valid sebelum dikirim.
@@ -155,7 +160,7 @@ Setiap halaman admin memvalidasi role melalui fungsi `requireAdmin()`. Halaman c
 - **Subtotal & grand total** dihitung otomatis di halaman keranjang tanpa perlu reload halaman.
 - Tombol "Beli" dinonaktifkan secara otomatis jika stok produk habis.
 
----
+<img width="1366" height="688" alt="image" src="https://github.com/user-attachments/assets/265e250a-3913-48c2-b5bc-24e2541b1a3a" />
 
 ## 📁 Struktur Direktori & Alur Data
 
@@ -211,6 +216,7 @@ Customer klik "Checkout" di cart.php
         → Return JSON { success: true }
     → Redirect ke halaman my_orders.php
 ```
+<img width="1366" height="692" alt="image" src="https://github.com/user-attachments/assets/c75d872e-f173-490f-bdc0-25025e082a70" />
 
 ---
 
